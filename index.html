@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نواة — من أصالة التمور... إلى ابتكار المستقبل</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --green-950:#0F211B;
+    --green-900:#1B362B;
+    --green-800:#254A3A;
+    --green-700:#2F5D48;
+    --green-100:#E4EDE6;
+    --gold-600:#B3822E;
+    --gold-500:#C89B3C;
+    --gold-300:#E3C878;
+    --gold-100:#F6E9C8;
+    --sand-50:#FBF7EC;
+    --sand-100:#F4ECD9;
+    --sand-200:#EADFC3;
+    --maroon-700:#7A2E1D;
+    --maroon-500:#9C4127;
+    --ink-900:#221D15;
+    --ink-700:#453B2C;
+    --white:#FFFFFF;
+    --shadow: 0 10px 30px rgba(34,29,21,.08);
+    --radius: 16px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){
+    html{scroll-behavior:auto;}
+    *{animation-duration:.001ms !important; transition-duration:.001ms !important;}
+  }
+  body{
+    margin:0;
+    background:var(--sand-50);
+    color:var(--ink-900);
+    font-family:'Tajawal',sans-serif;
+    line-height:1.9;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{ font-family:'Amiri', serif; }
+  a{color:inherit;}
+  img,svg{display:block;}
+  .wrap{max-width:1120px; margin:0 auto; padding:0 24px;}
+  ::selection{ background:var(--gold-300); color:var(--ink-900); }
+
+  /* ---------- decorative background texture ---------- */
+  .frond-bg{position:absolute; inset:0; overflow:hidden; pointer-events:none;}
+  .frond-bg svg{position:absolute;}
+
+  /* ---------- HERO ---------- */
+  .hero{
+    position:relative;
+    background: radial-gradient(1200px 600px at 20% -10%, var(--green-800) 0%, var(--green-900) 55%, var(--green-950) 100%);
+    color:var(--sand-50);
+    padding:96px 0 120px;
+    overflow:hidden;
+    isolation:isolate;
+  }
+  .hero .wrap{position:relative; z-index:2;}
+  .hero-eyebrow{
+    display:inline-flex; align-items:center; gap:8px;
+    font-size:13px; letter-spacing:.06em; color:var(--gold-300);
+    border:1px solid rgba(227,200,120,.35); border-radius:999px;
+    padding:6px 16px; margin-bottom:28px;
+    background:rgba(227,200,120,.06);
+  }
+  .wordmark{
+    font-size:clamp(64px, 13vw, 132px);
+    font-weight:700;
+    line-height:1;
+    background:linear-gradient(180deg, var(--gold-300) 0%, var(--gold-600) 65%, var(--gold-500) 100%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    margin:0 0 6px;
+    filter:drop-shadow(0 6px 18px rgba(0,0,0,.25));
+  }
+  .hero-rule{width:96px; height:3px; background:var(--gold-500); border-radius:3px; margin:18px 0 22px;}
+  .tagline{
+    font-family:'Amiri', serif; font-style:italic; font-size:clamp(20px,3vw,28px);
+    color:var(--sand-100); max-width:640px; margin:0 0 14px;
+  }
+  .hero-sub{ color:rgba(251,247,236,.72); max-width:620px; font-size:16px; margin:0 0 44px;}
+  .hero-stats{ display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:rgba(255,255,255,.08); border-radius:var(--radius); overflow:hidden; border:1px solid rgba(255,255,255,.08);}
+  .hero-stat{ background:rgba(255,255,255,.03); padding:20px 14px; text-align:center;}
+  .hero-stat b{ display:block; font-family:'Amiri',serif; font-size:clamp(20px,3.4vw,30px); color:var(--gold-300);}
+  .hero-stat span{ font-size:12.5px; color:rgba(251,247,236,.65);}
+  @media (max-width:720px){ .hero-stats{grid-template-columns:repeat(2,1fr);} }
+
+  /* ---------- STICKY NAV ---------- */
+  .nav-wrap{
+    position:sticky; top:0; z-index:50;
+    background:rgba(251,247,236,.92); backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--sand-200);
+  }
+  .nav-scroll{ display:flex; gap:8px; overflow-x:auto; padding:12px 24px; max-width:1120px; margin:0 auto; scrollbar-width:thin;}
+  .nav-scroll::-webkit-scrollbar{height:5px;}
+  .nav-scroll::-webkit-scrollbar-thumb{background:var(--sand-200); border-radius:4px;}
+  .nav-pill{
+    flex:0 0 auto; display:flex; align-items:center; gap:6px;
+    font-size:13.5px; font-weight:500; color:var(--ink-700);
+    background:var(--white); border:1px solid var(--sand-200);
+    padding:8px 14px; border-radius:999px; text-decoration:none;
+    transition:.18s ease;
+    white-space:nowrap;
+  }
+  .nav-pill svg{width:15px; height:15px; stroke:var(--green-700);}
+  .nav-pill:hover, .nav-pill.active{ background:var(--green-900); color:var(--sand-50); border-color:var(--green-900);}
+  .nav-pill:hover svg, .nav-pill.active svg{ stroke:var(--gold-300); }
+
+  /* ---------- SECTIONS ---------- */
+  section.chapter{ padding:80px 0; position:relative; }
+  section.chapter.alt{ background:var(--sand-100); }
+  .chapter-head{ display:flex; align-items:center; gap:16px; margin-bottom:8px;}
+  .chapter-icon{
+    width:52px; height:52px; border-radius:14px; flex:0 0 auto;
+    background:linear-gradient(155deg, var(--green-800), var(--green-900));
+    display:flex; align-items:center; justify-content:center;
+    box-shadow: var(--shadow);
+  }
+  .chapter-icon svg{ width:26px; height:26px; stroke:var(--gold-300); }
+  .chapter-eyebrow{ font-size:13px; letter-spacing:.08em; color:var(--gold-600); font-weight:700; margin:0 0 4px;}
+  .chapter-title{ font-size:clamp(24px,3.4vw,34px); margin:0; color:var(--green-900); }
+  .chapter-lede{ max-width:760px; color:var(--ink-700); font-size:16.5px; margin:20px 0 36px; }
+
+  /* ---------- CARDS / GRID ---------- */
+  .grid{ display:grid; gap:20px; }
+  .grid-2{ grid-template-columns:repeat(2,1fr); }
+  .grid-3{ grid-template-columns:repeat(3,1fr); }
+  .grid-4{ grid-template-columns:repeat(4,1fr); }
+  @media (max-width:860px){ .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .grid-2,.grid-3,.grid-4{ grid-template-columns:1fr; } }
+
+  .card{
+    background:var(--white); border:1px solid var(--sand-200); border-radius:var(--radius);
+    padding:24px; box-shadow:var(--shadow);
+  }
+  .card h4{ margin:0 0 8px; color:var(--green-900); font-size:17px; display:flex; gap:8px; align-items:center;}
+  .card h4 svg{ width:19px; height:19px; stroke:var(--gold-600); flex:0 0 auto;}
+  .card p{ margin:0; color:var(--ink-700); font-size:14.5px; }
+
+  .value-card{ border-right:4px solid var(--gold-500); border-radius:10px; background:var(--white); padding:18px 20px; box-shadow:var(--shadow);}
+  .value-card b{ color:var(--green-900); display:block; margin-bottom:4px;}
+  .value-card span{ font-size:14px; color:var(--ink-700);}
+
+  .quote-box{
+    background:linear-gradient(120deg, var(--green-900), var(--green-800));
+    color:var(--sand-100); border-radius:var(--radius); padding:28px 32px;
+    font-family:'Amiri',serif; font-style:italic; font-size:19px; line-height:1.85;
+    position:relative; box-shadow:var(--shadow);
+  }
+  .quote-box::before{ content:"«"; font-family:'Amiri',serif; color:var(--gold-500); font-size:46px; position:absolute; top:2px; right:18px; opacity:.6;}
+
+  /* ---------- TABLES ---------- */
+  .table-wrap{ overflow-x:auto; border-radius:var(--radius); box-shadow:var(--shadow); }
+  table{ width:100%; border-collapse:collapse; background:var(--white); font-size:14.5px; min-width:480px;}
+  thead th{ background:var(--green-900); color:var(--gold-300); font-weight:700; padding:14px 16px; text-align:center; font-size:13.5px;}
+  tbody td{ padding:12px 16px; border-bottom:1px solid var(--sand-200); text-align:center; color:var(--ink-800,var(--ink-900));}
+  tbody td:first-child{ text-align:right; font-weight:700; color:var(--green-900); background:var(--sand-50);}
+  tbody tr:nth-child(even){ background:var(--sand-100); }
+  tbody tr:last-child td{ font-weight:700; color:var(--maroon-700); }
+
+  /* ---------- ORG CHART ---------- */
+  .org{ display:flex; flex-direction:column; align-items:center; gap:0; }
+  .org-box{
+    background:var(--white); border:2px solid var(--green-800); border-radius:12px;
+    padding:14px 22px; text-align:center; box-shadow:var(--shadow); min-width:220px;
+  }
+  .org-box.top{ background:linear-gradient(155deg,var(--green-800),var(--green-900)); color:var(--sand-50); border-color:var(--green-950);}
+  .org-box .role{ font-size:12px; color:var(--gold-600); font-weight:700; }
+  .org-box.top .role{ color:var(--gold-300); }
+  .org-box .name{ font-family:'Amiri',serif; font-size:17px; margin-top:2px;}
+  .org-line{ width:2px; height:28px; background:var(--sand-200); }
+  .org-line.dark{ background:var(--green-700); }
+  .org-row{ display:flex; gap:0; position:relative; width:100%; justify-content:center; flex-wrap:wrap; }
+  .org-children{ display:flex; gap:26px; padding-top:0; position:relative; flex-wrap:wrap; justify-content:center; }
+  .org-children::before{ content:""; position:absolute; top:-28px; left:50%; right:50%; }
+  .org-connector{ position:relative; width:100%; height:28px; }
+  .org-connector svg{ width:100%; height:100%; }
+
+  /* ---------- TIMELINE ---------- */
+  .timeline{ position:relative; padding:20px 0; }
+  .timeline::before{
+    content:""; position:absolute; top:0; bottom:0; right:calc(50% - 1px); width:2px;
+    background:repeating-linear-gradient(var(--gold-500) 0 8px, transparent 8px 16px);
+  }
+  .t-item{ width:50%; padding:0 36px 48px; position:relative; }
+  .t-item:nth-child(odd){ margin-inline-start:50%; text-align:right; }
+  .t-item:nth-child(even){ text-align:left; }
+  .t-dot{
+    position:absolute; top:2px; width:16px; height:16px; border-radius:50%;
+    background:var(--gold-500); border:3px solid var(--sand-50); box-shadow:0 0 0 2px var(--green-800);
+  }
+  .t-item:nth-child(odd) .t-dot{ right:calc(-8px); }
+  .t-item:nth-child(even) .t-dot{ left:calc(-8px); }
+  .t-card{ background:var(--white); border:1px solid var(--sand-200); border-radius:14px; padding:18px 20px; box-shadow:var(--shadow); display:inline-block; text-align:right; max-width:100%;}
+  .t-card .month{ font-size:12.5px; color:var(--gold-600); font-weight:700; letter-spacing:.05em;}
+  .t-card h4{ margin:4px 0 8px; color:var(--green-900); font-size:17px;}
+  .t-card ul{ margin:0; padding-inline-start:18px; font-size:14px; color:var(--ink-700);}
+  @media (max-width:720px){
+    .timeline::before{ right:12px; }
+    .t-item, .t-item:nth-child(odd), .t-item:nth-child(even){ width:100%; margin-inline-start:0; padding:0 0 36px 0; padding-inline-end:0; padding-inline-start:40px; text-align:right; }
+    .t-item:nth-child(odd) .t-dot, .t-item:nth-child(even) .t-dot{ right:auto; left:4px; }
+    .t-card{ text-align:right; }
+  }
+
+  /* ---------- PRIZE CARDS ---------- */
+  .prize-card{
+    background:var(--white); border-radius:var(--radius); overflow:hidden; box-shadow:var(--shadow);
+    border:1px solid var(--sand-200); display:flex; flex-direction:column;
+  }
+  .prize-head{ padding:20px 20px 14px; background:linear-gradient(140deg,var(--green-900),var(--green-800)); color:var(--sand-50); display:flex; align-items:center; gap:10px;}
+  .prize-head svg{ width:24px; height:24px; stroke:var(--gold-300); flex:0 0 auto;}
+  .prize-head b{ font-family:'Amiri',serif; font-size:18px; }
+  .prize-body{ padding:16px 20px 20px; flex:1;}
+  .prize-rank{ display:flex; justify-content:space-between; align-items:center; padding:9px 0; border-bottom:1px dashed var(--sand-200); font-size:14.5px;}
+  .prize-rank:last-child{ border-bottom:none; }
+  .prize-rank .medal{ display:inline-flex; align-items:center; gap:8px; color:var(--ink-700); font-weight:600;}
+  .prize-rank .amount{ color:var(--maroon-700); font-weight:700; }
+  .prize-total{ margin-top:14px; text-align:center; background:var(--gold-100); border-radius:10px; padding:10px; font-weight:700; color:var(--green-900); font-size:14.5px;}
+
+  /* ---------- SPONSORSHIP TIERS ---------- */
+  .tier-card{ background:var(--white); border-radius:var(--radius); box-shadow:var(--shadow); border:1px solid var(--sand-200); padding:26px 22px; text-align:center; position:relative; display:flex; flex-direction:column;}
+  .tier-card.featured{ border:2px solid var(--gold-500); transform:translateY(-6px); }
+  .tier-badge{ position:absolute; top:-13px; right:50%; transform:translateX(50%); background:var(--gold-500); color:var(--green-950); font-size:12px; font-weight:700; padding:4px 14px; border-radius:999px;}
+  .tier-name{ font-family:'Amiri',serif; font-size:20px; color:var(--green-900); margin-bottom:6px;}
+  .tier-price{ font-size:26px; font-weight:800; color:var(--maroon-700); margin-bottom:18px;}
+  .tier-price span{ font-size:13px; font-weight:500; color:var(--ink-700);}
+  .tier-list{ list-style:none; padding:0; margin:0; text-align:right; font-size:13.5px; color:var(--ink-700); flex:1;}
+  .tier-list li{ padding:7px 0; border-bottom:1px solid var(--sand-100); display:flex; gap:8px; align-items:flex-start;}
+  .tier-list li svg{ width:14px; height:14px; stroke:var(--green-700); flex:0 0 auto; margin-top:3px;}
+
+  /* ---------- MISC ---------- */
+  .divider-num{ font-family:'Amiri',serif; font-size:13px; color:var(--gold-600); }
+  .foot{ background:var(--green-950); color:rgba(251,247,236,.7); padding:52px 0 30px; }
+  .foot .wordmark-sm{ font-family:'Amiri',serif; font-size:34px; color:var(--gold-300); margin-bottom:6px;}
+  .foot small{ display:block; margin-top:20px; color:rgba(251,247,236,.4); font-size:12.5px;}
+  .badge-row{ display:flex; flex-wrap:wrap; gap:10px; margin-top:18px;}
+  .badge{ background:var(--sand-100); border:1px solid var(--sand-200); color:var(--green-900); font-size:12.5px; font-weight:700; padding:6px 12px; border-radius:999px;}
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:none; }
+
+  .two-col{ display:grid; grid-template-columns:1.1fr .9fr; gap:32px; align-items:start;}
+  @media (max-width:860px){ .two-col{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+
+<!-- ============ HERO ============ -->
+<header class="hero">
+  <div class="frond-bg" aria-hidden="true">
+    <svg width="620" height="620" style="top:-160px; right:-160px; opacity:.15" viewBox="0 0 200 200">
+      <g stroke="#E3C878" stroke-width="1.2" fill="none">
+        <path d="M100 190 C 100 120, 100 80, 100 10" />
+        <path d="M100 60 C 60 40, 20 30, 6 60" />
+        <path d="M100 60 C 140 40, 180 30, 194 60" />
+        <path d="M100 90 C 55 78, 15 82, 4 108" />
+        <path d="M100 90 C 145 78, 185 82, 196 108" />
+        <path d="M100 120 C 60 115, 25 125, 18 150" />
+        <path d="M100 120 C 140 115, 175 125, 182 150" />
+      </g>
+    </svg>
+    <svg width="420" height="420" style="bottom:-120px; left:-120px; opacity:.12" viewBox="0 0 200 200">
+      <g stroke="#E3C878" stroke-width="1.2" fill="none">
+        <circle cx="100" cy="100" r="6" fill="#E3C878" stroke="none"/>
+        <circle cx="118" cy="96" r="6" fill="#E3C878" stroke="none" opacity=".7"/>
+        <circle cx="90" cy="82" r="6" fill="#E3C878" stroke="none" opacity=".5"/>
+        <path d="M100 100 Q 60 60 40 20" />
+      </g>
+    </svg>
+  </div>
+  <div class="wrap">
+    <span class="hero-eyebrow">جمعية ملاك المطاعم والمقاهي &nbsp;×&nbsp; المركز الوطني للنخيل والتمور</span>
+    <h1 class="wordmark">نواة</h1>
+    <div class="hero-rule"></div>
+    <p class="tagline">من أصالة التمور... إلى ابتكار المستقبل</p>
+    <p class="hero-sub">الوثيقة التنفيذية الشاملة للمبادرة الوطنية لابتكار منتجات التمور في قطاع المطاعم والمقاهي — حركة وطنية ممتدة على ستة أشهر تحوّل التمر السعودي من مكوّن موسمي إلى ركيزة دائمة في صناعة الأغذية والمشروبات.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><b>500+</b><span>منشأة مشاركة</span></div>
+      <div class="hero-stat"><b>800+</b><span>منتج جديد</span></div>
+      <div class="hero-stat"><b>1M</b><span>ريال جوائز</span></div>
+      <div class="hero-stat"><b>6</b><span>أشهر</span></div>
+    </div>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="nav-wrap">
+  <div class="nav-scroll" id="navScroll">
+    <a class="nav-pill" href="#foundation" data-icon="seed">الأساس</a>
+    <a class="nav-pill" href="#context" data-icon="compass">لماذا الآن</a>
+    <a class="nav-pill" href="#numbers" data-icon="chart">الأرقام</a>
+    <a class="nav-pill" href="#governance" data-icon="org">الحوكمة</a>
+    <a class="nav-pill" href="#timeline" data-icon="calendar">الخطة الزمنية</a>
+    <a class="nav-pill" href="#participation" data-icon="check">الشروط والتحكيم</a>
+    <a class="nav-pill" href="#prizes" data-icon="trophy">الجوائز</a>
+    <a class="nav-pill" href="#audience" data-icon="users">جائزة الجمهور</a>
+    <a class="nav-pill" href="#marketing" data-icon="megaphone">التسويق</a>
+    <a class="nav-pill" href="#closing" data-icon="sparkle">الحفل الختامي</a>
+    <a class="nav-pill" href="#sponsorship" data-icon="handshake">الرعايات</a>
+    <a class="nav-pill" href="#budget" data-icon="wallet">الميزانية والعوائد</a>
+    <a class="nav-pill" href="#risks" data-icon="shield">المخاطر والمستقبل</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ============ 1. FOUNDATION ============ -->
+<section class="chapter" id="foundation">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="seed"></div>
+      <div>
+        <p class="chapter-eyebrow">01 — الأساس الاستراتيجي</p>
+        <h2 class="chapter-title">الرؤية، الرسالة، والقيم</h2>
+      </div>
+    </div>
+    <p class="chapter-lede reveal">رسالة "نواة" ليست جائزة لأفضل منتج بالتمر، بل حركة وطنية لإعادة ابتكار التمور السعودية — الجائزة وسيلة، وليست الهدف.</p>
+
+    <div class="grid grid-2 reveal" style="margin-bottom:28px;">
+      <div class="quote-box">أن تصبح التمور السعودية مكونًا أساسيًا في صناعة الأغذية والمشروبات، وحاضرًا في الحياة اليومية للأجيال الجديدة من خلال منتجات مبتكرة تعزز القيمة الاقتصادية وتحافظ على الإرث الثقافي السعودي.</div>
+      <div class="quote-box" style="background:linear-gradient(120deg,var(--maroon-700),var(--maroon-500));">تمكين المطاعم والمقاهي من إعادة اكتشاف التمور السعودية وتوظيفها بطرق إبداعية، بما يرفع الطلب عليها ويفتح أسواقًا وفرصًا استثمارية جديدة، مع المحافظة على مكانتها كرمز أصيل للثقافة السعودية.</div>
+    </div>
+
+    <div class="grid grid-4 reveal" style="margin-bottom:36px;">
+      <div class="value-card"><b>الأصالة</b><span>احترام الإرث التاريخي والثقافي للتمور في كل منتج وحملة.</span></div>
+      <div class="value-card"><b>الابتكار</b><span>الجرأة في التجربة والتطوير دون المساس بالهوية.</span></div>
+      <div class="value-card"><b>الشراكة</b><span>تكامل بين القطاعين الحكومي والخاص والمجتمع.</span></div>
+      <div class="value-card"><b>الاستدامة</b><span>أثر يستمر بعد الحدث، لا لحظة إعلامية عابرة.</span></div>
+    </div>
+
+    <div class="grid grid-4 reveal">
+      <div class="card"><h4 data-icon="bulb"></h4><b style="color:var(--green-900)">الابتكار</b><p>تحويل التمور من منتج تقليدي إلى مكوّن يدخل في مئات الوصفات والمنتجات.</p></div>
+      <div class="card"><h4 data-icon="growth"></h4><b style="color:var(--green-900)">الاقتصاد</b><p>رفع القيمة المضافة عبر التصنيع بدل بيع التمور كمادة خام.</p></div>
+      <div class="card"><h4 data-icon="culture"></h4><b style="color:var(--green-900)">الثقافة</b><p>تقديم التمور بصورة تناسب أنماط الحياة الحديثة دون فقدان أصالتها.</p></div>
+      <div class="card"><h4 data-icon="seed"></h4><b style="color:var(--green-900)">الاستدامة</b><p>تحويل المبادرة إلى موسم سنوي متكرر يطلق عشرات المنتجات كل عام.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. CONTEXT ============ -->
+<section class="chapter alt" id="context">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="compass"></div>
+      <div>
+        <p class="chapter-eyebrow">02 — لماذا الآن</p>
+        <h2 class="chapter-title">التحديات، الفرصة، والمواءمة مع رؤية 2030</h2>
+      </div>
+    </div>
+
+    <div class="two-col reveal">
+      <div>
+        <h3 style="color:var(--green-900); font-size:19px;">التحديات الحالية</h3>
+        <ul style="padding-inline-start:20px; color:var(--ink-700);">
+          <li>الارتباط الموسمي: يقتصر الاستخدام التجاري غالبًا على شهر رمضان.</li>
+          <li>غياب الابتكار المنتظم خارج القوالب التقليدية.</li>
+          <li>ضعف الحوافز التجارية لتطوير منتجات جديدة.</li>
+          <li>محدودية القصة الإعلامية الممتدة طوال العام.</li>
+        </ul>
+        <h3 style="color:var(--green-900); font-size:19px; margin-top:22px;">الفرصة الوطنية</h3>
+        <p style="color:var(--ink-700)">تمتلك المملكة أكبر قاعدة إنتاجية للتمور عالميًا. تخدم "نواة" ثلاثة أهداف متزامنة: زيادة الاستهلاك الفعلي، تحفيز الابتكار داخل القطاع، وصناعة قصة إعلامية وطنية ممتدة لستة أشهر بدل يوم واحد.</p>
+      </div>
+      <div class="card">
+        <h4 style="margin-bottom:14px;">مواءمة مع رؤية المملكة 2030</h4>
+        <ul style="padding-inline-start:18px; font-size:14.5px; color:var(--ink-700); margin:0;">
+          <li>رفع القيمة المضافة للمنتجات الوطنية.</li>
+          <li>شراكة استراتيجية بين القطاع غير الربحي والجهة الحكومية المتخصصة.</li>
+          <li>تمكين ريادة الأعمال في قطاع الأغذية والمشروبات.</li>
+          <li>تعزيز الهوية الوطنية بصورة عصرية.</li>
+          <li>دعم التنويع الاقتصادي وتقليل الاستيراد.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="grid grid-3 reveal" style="margin-top:36px;">
+      <div class="card"><h4 data-icon="growth"></h4><b>الأثر الاقتصادي</b><p style="margin-top:6px">200 ألف وحدة مبيعات متوقعة، وفرص استثمارية جديدة للمصانع الصغيرة والمتوسطة.</p></div>
+      <div class="card"><h4 data-icon="culture"></h4><b>الأثر الثقافي</b><p style="margin-top:6px">ترسيخ حضور التمور في نمط الحياة اليومي للأجيال الجديدة، لا في المناسبات فقط.</p></div>
+      <div class="card"><h4 data-icon="media"></h4><b>الأثر الإعلامي</b><p style="margin-top:6px">قصة إعلامية ممتدة 6 أشهر و100 مليون ظهور إعلامي مقدَّر.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. NUMBERS ============ -->
+<section class="chapter" id="numbers">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="chart"></div>
+      <div>
+        <p class="chapter-eyebrow">03 — الأرقام المستهدفة</p>
+        <h2 class="chapter-title">توقعات النسخة الأولى</h2>
+      </div>
+    </div>
+    <div class="grid grid-4 reveal" style="margin-bottom:8px;">
+      <div class="hero-stat" style="background:var(--green-900); border-radius:14px; color:var(--sand-50); padding:22px;"><b style="color:var(--gold-300)">500</b><span style="color:rgba(251,247,236,.7)">منشأة مشاركة</span></div>
+      <div class="hero-stat" style="background:var(--green-900); border-radius:14px; color:var(--sand-50); padding:22px;"><b style="color:var(--gold-300)">800+</b><span style="color:rgba(251,247,236,.7)">منتج جديد</span></div>
+      <div class="hero-stat" style="background:var(--green-900); border-radius:14px; color:var(--sand-50); padding:22px;"><b style="color:var(--gold-300)">200K</b><span style="color:rgba(251,247,236,.7)">وحدة مباعة</span></div>
+      <div class="hero-stat" style="background:var(--green-900); border-radius:14px; color:var(--sand-50); padding:22px;"><b style="color:var(--gold-300)">1M</b><span style="color:rgba(251,247,236,.7)">تجربة تذوق</span></div>
+    </div>
+    <div class="table-wrap reveal" style="margin-top:28px;">
+      <table>
+        <thead><tr><th>المؤشر</th><th>الرقم المستهدف</th></tr></thead>
+        <tbody>
+          <tr><td>المشاهدات الرقمية المستهدفة</td><td>5 ملايين مشاهدة</td></tr>
+          <tr><td>الظهور الإعلامي المقدَّر</td><td>100 مليون ظهور</td></tr>
+          <tr><td>الانطباعات على منصات التواصل</td><td>50 مليون انطباع</td></tr>
+          <tr><td>عدد صنّاع المحتوى والمؤثرين</td><td>500 صانع محتوى</td></tr>
+          <tr><td>عدد الجهات الإعلامية المشاركة</td><td>50+ جهة</td></tr>
+          <tr><td>عدد الرعاة والشركاء</td><td>20 راعيًا وشريكًا</td></tr>
+          <tr><td>عمليات التصويت الجماهيري</td><td>100,000+ صوت</td></tr>
+          <tr><td>شرط استمرارية المنتج بعد الجائزة</td><td>لا يقل عن 6 أشهر</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. GOVERNANCE / ORG CHART ============ -->
+<section class="chapter alt" id="governance">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="org"></div>
+      <div>
+        <p class="chapter-eyebrow">04 — الحوكمة</p>
+        <h2 class="chapter-title">الهيكل التنظيمي</h2>
+      </div>
+    </div>
+    <p class="chapter-lede reveal">تكامل الأدوار بين جهة إشرافية استراتيجية، وجهة تنفيذية ميدانية، ولجان وشركاء متخصصين.</p>
+
+    <div class="org reveal">
+      <div class="org-box top"><div class="role">الجهة المُشرفة — الراعي الاستراتيجي</div><div class="name">المركز الوطني للنخيل والتمور</div></div>
+      <div class="org-line dark"></div>
+      <div class="org-box" style="border-color:var(--gold-500);"><div class="role" style="color:var(--maroon-700)">الجهة المنظمة والمنفذة</div><div class="name">جمعية ملاك المطاعم والمقاهي (RCOA)</div></div>
+      <div class="org-line"></div>
+      <div class="org-children">
+        <div class="org-box"><div class="role">تحكيم</div><div class="name" style="font-size:14.5px;">لجنة التحكيم المستقلة</div></div>
+        <div class="org-box"><div class="role">شراكات</div><div class="name" style="font-size:14.5px;">لجنة الرعاة والشراكات</div></div>
+        <div class="org-box"><div class="role">تنفيذ</div><div class="name" style="font-size:14.5px;">شريك تنظيم الفعاليات</div></div>
+        <div class="org-box"><div class="role">تقنية</div><div class="name" style="font-size:14.5px;">الشريك التقني (QR / منصة)</div></div>
+        <div class="org-box"><div class="role">إعلام</div><div class="name" style="font-size:14.5px;">وكالة العلاقات الإعلامية</div></div>
+        <div class="org-box"><div class="role">رقابة</div><div class="name" style="font-size:14.5px;">لجنة الحوكمة والتدقيق</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. TIMELINE ============ -->
+<section class="chapter" id="timeline">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="calendar"></div>
+      <div>
+        <p class="chapter-eyebrow">05 — الخطة الزمنية</p>
+        <h2 class="chapter-title">ستة أشهر، من الفكرة إلى الحفل الختامي</h2>
+      </div>
+    </div>
+
+    <div class="timeline reveal">
+      <div class="t-item"><span class="t-dot"></span>
+        <div class="t-card"><div class="month">الشهر الأول</div><h4>الإعلان والإطلاق</h4>
+          <ul><li>مؤتمر صحفي لإطلاق المبادرة</li><li>فتح باب تسجيل المنشآت</li><li>نشر الشروط والفئات ومعايير التحكيم</li></ul>
+        </div>
+      </div>
+      <div class="t-item"><span class="t-dot"></span>
+        <div class="t-card"><div class="month">الشهرين 2–3</div><h4>الإطلاق ورصد الأداء</h4>
+          <ul><li>طرح المنتجات في قوائم المنشآت</li><li>رصد المبيعات والتفاعل عبر QR</li><li>انطلاق حملة المحتوى والمؤثرين</li></ul>
+        </div>
+      </div>
+      <div class="t-item"><span class="t-dot"></span>
+        <div class="t-card"><div class="month">الشهر الرابع</div><h4>تفعيل المؤهلين</h4>
+          <ul><li>حصر المنشآت المستوفية للشروط</li><li>تفعيلها رسميًا في المنافسة النهائية</li><li>بدء الزيارات الميدانية للجنة التحكيم</li></ul>
+        </div>
+      </div>
+      <div class="t-item"><span class="t-dot"></span>
+        <div class="t-card"><div class="month">الشهر الخامس</div><h4>التحكيم والتصويت</h4>
+          <ul><li>استكمال التقييم الميداني</li><li>فتح التصويت الجماهيري</li><li>إعلان القائمة القصيرة لكل فئة</li></ul>
+        </div>
+      </div>
+      <div class="t-item"><span class="t-dot"></span>
+        <div class="t-card"><div class="month">الشهر السادس</div><h4>الحفل الختامي</h4>
+          <ul><li>تتويج الفائزين في الرياض</li><li>إصدار دليل أفضل المنتجات</li><li>تقييم النسخة وخارطة طريق النسخة القادمة</li></ul>
+        </div>
+      </div>
+    </div>
+
+    <h3 class="reveal" style="color:var(--green-900); font-size:19px; margin-top:10px;">آلية التقييم ونسبها</h3>
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>معيار التقييم</th><th>الوزن النسبي</th></tr></thead>
+        <tbody>
+          <tr><td>الابتكار في استخدام التمر</td><td>30%</td></tr>
+          <tr><td>الأداء التجاري (المبيعات والتفاعل الفعلي)</td><td>20%</td></tr>
+          <tr><td>الطعم والجودة الحسية</td><td>20%</td></tr>
+          <tr><td>الهوية السعودية والقصة الثقافية</td><td>15%</td></tr>
+          <tr><td>جودة التقديم والتغليف</td><td>10%</td></tr>
+          <tr><td>قابلية الاستمرار والتوسع</td><td>5%</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. PARTICIPATION ============ -->
+<section class="chapter alt" id="participation">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="check"></div>
+      <div>
+        <p class="chapter-eyebrow">06 — شروط المشاركة</p>
+        <h2 class="chapter-title">من يستطيع المشاركة، وبأي شروط</h2>
+      </div>
+    </div>
+    <div class="grid grid-2 reveal">
+      <ul style="padding-inline-start:20px; color:var(--ink-700); margin:0;">
+        <li>منتج جديد لم يسبق إدراجه قبل انطلاق المبادرة.</li>
+        <li>يحتوي على نسبة محددة من التمور السعودية كمكوّن أساسي.</li>
+        <li>متاح فعليًا للبيع والطلب طوال فترة المبادرة.</li>
+        <li>يبقى ضمن المنيو مدة لا تقل عن شهرين خلال التقييم.</li>
+      </ul>
+      <ul style="padding-inline-start:20px; color:var(--ink-700); margin:0;">
+        <li>الالتزام بالاستمرارية 6 أشهر بعد إعلان النتائج (إلا إذا كان موسميًا).</li>
+        <li>السماح بزيارات لجنة التحكيم الميدانية دون قيود.</li>
+        <li>الموافقة على استخدام الصور والفيديو في الحملة الإعلامية.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. PRIZES ============ -->
+<section class="chapter" id="prizes">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="trophy"></div>
+      <div>
+        <p class="chapter-eyebrow">07 — الجوائز</p>
+        <h2 class="chapter-title">خمسة مسارات، مليون ريال</h2>
+      </div>
+    </div>
+
+    <div class="grid grid-4 reveal">
+      <div class="prize-card">
+        <div class="prize-head" data-icon-h="salt"><b>أفضل منتج مالح</b></div>
+        <div class="prize-body">
+          <div class="prize-rank"><span class="medal">🥇 الأول</span><span class="amount">60,000</span></div>
+          <div class="prize-rank"><span class="medal">🥈 الثاني</span><span class="amount">40,000</span></div>
+          <div class="prize-rank"><span class="medal">🥉 الثالث</span><span class="amount">25,000</span></div>
+          <div class="prize-total">إجمالي المسار: 125,000 ريال</div>
+        </div>
+      </div>
+      <div class="prize-card">
+        <div class="prize-head"><b>أفضل منتج رئيسي</b></div>
+        <div class="prize-body">
+          <div class="prize-rank"><span class="medal">🥇 الأول</span><span class="amount">60,000</span></div>
+          <div class="prize-rank"><span class="medal">🥈 الثاني</span><span class="amount">40,000</span></div>
+          <div class="prize-rank"><span class="medal">🥉 الثالث</span><span class="amount">25,000</span></div>
+          <div class="prize-total">إجمالي المسار: 125,000 ريال</div>
+        </div>
+      </div>
+      <div class="prize-card">
+        <div class="prize-head"><b>أفضل منتج حلى</b></div>
+        <div class="prize-body">
+          <div class="prize-rank"><span class="medal">🥇 الأول</span><span class="amount">60,000</span></div>
+          <div class="prize-rank"><span class="medal">🥈 الثاني</span><span class="amount">40,000</span></div>
+          <div class="prize-rank"><span class="medal">🥉 الثالث</span><span class="amount">25,000</span></div>
+          <div class="prize-total">إجمالي المسار: 125,000 ريال</div>
+        </div>
+      </div>
+      <div class="prize-card">
+        <div class="prize-head"><b>أفضل منتج مشروب</b></div>
+        <div class="prize-body">
+          <div class="prize-rank"><span class="medal">🥇 الأول</span><span class="amount">60,000</span></div>
+          <div class="prize-rank"><span class="medal">🥈 الثاني</span><span class="amount">40,000</span></div>
+          <div class="prize-rank"><span class="medal">🥉 الثالث</span><span class="amount">25,000</span></div>
+          <div class="prize-total">إجمالي المسار: 125,000 ريال</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="reveal" style="margin-top:22px;">
+      <div class="prize-card" style="border:2px solid var(--gold-500);">
+        <div class="prize-head" style="background:linear-gradient(140deg,var(--maroon-700),var(--maroon-500));"><b>المسار الخامس — جائزة الجمهور</b></div>
+        <div class="prize-body">
+          <div class="grid grid-2" style="gap:10px;">
+            <div>
+              <div class="prize-rank"><span class="medal">🥇 المركز الأول</span><span class="amount">100,000</span></div>
+              <div class="prize-rank"><span class="medal">🥈 المركز الثاني</span><span class="amount">60,000</span></div>
+              <div class="prize-rank"><span class="medal">🥉 المركز الثالث</span><span class="amount">40,000</span></div>
+            </div>
+            <div>
+              <div class="prize-rank"><span class="medal">سحوبات شهرية × 6</span><span class="amount">300,000</span></div>
+              <div class="prize-rank"><span class="medal">إجمالي المسار</span><span class="amount">500,000</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p style="text-align:center; margin-top:18px; font-family:'Amiri',serif; font-size:20px; color:var(--green-900);">الإجمالي العام للجوائز = <b style="color:var(--maroon-700)">1,000,000 ريال سعودي</b></p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. AUDIENCE ============ -->
+<section class="chapter alt" id="audience">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="users"></div>
+      <div>
+        <p class="chapter-eyebrow">08 — مسابقة الجمهور</p>
+        <h2 class="chapter-title">رحلة كل زائر تحسب</h2>
+      </div>
+    </div>
+    <div class="grid grid-3 reveal">
+      <div class="card"><h4 data-icon="scan"></h4><b>تجربة ومسح</b><p style="margin-top:6px">تجربة المنتج ومسح رمز QR الخاص به لتسجيل زيارة موثَّقة.</p></div>
+      <div class="card"><h4 data-icon="share"></h4><b>مشاركة وتوثيق</b><p style="margin-top:6px">مشاركة التجربة بصورة أو فيديو مع الهاشتاق الرسمي للمبادرة.</p></div>
+      <div class="card"><h4 data-icon="passport"></h4><b>بطاقة الجولة</b><p style="margin-top:6px">تجميع نقاط كلما جُرِّب منتج من منشأة مختلفة، لضمان توزّع الزيارات.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. MARKETING ============ -->
+<section class="chapter" id="marketing">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="megaphone"></div>
+      <div>
+        <p class="chapter-eyebrow">09 — التسويق والمحتوى</p>
+        <h2 class="chapter-title">قبل، خلال، وبعد المبادرة</h2>
+      </div>
+    </div>
+    <div class="grid grid-3 reveal">
+      <div class="card"><h4>ما قبل الإطلاق</h4><p>حملة تشويقية، إحاطات إعلامية مسبقة، توقيع الشراكات الإعلامية.</p></div>
+      <div class="card"><h4>أثناء التنفيذ</h4><p>تقويم محتوى أسبوعي، جولات ميدانية للمؤثرين، تحديات رقمية دورية.</p></div>
+      <div class="card"><h4>ما بعد الإطلاق</h4><p>تغطية الحفل الختامي، فيلم وثائقي ودليل المنتجات، حملة استمرارية.</p></div>
+    </div>
+
+    <div class="two-col reveal" style="margin-top:36px;">
+      <div>
+        <h3 style="color:var(--green-900); font-size:19px;">فئات المؤثرين</h3>
+        <ul style="padding-inline-start:20px; color:var(--ink-700);">
+          <li>مؤثرو المحتوى الغذائي ذوو الجمهور الواسع — لصناعة الوعي الأولي.</li>
+          <li>طهاة ومختصون في الطهي — لمصداقية احترافية.</li>
+          <li>مؤثرو نمط الحياة والهوية الوطنية — لربط المبادرة بالقيمة الثقافية.</li>
+          <li>صنّاع محتوى محليون (Micro/Nano) — لتغطية المناطق ميدانيًا.</li>
+          <li>إعلاميون وبرامج اقتصادية — لتغطية المحطات الرئيسية.</li>
+        </ul>
+      </div>
+      <div class="card">
+        <h4 style="margin-bottom:12px;">متطلبات المحتوى من كل منشأة</h4>
+        <ul style="padding-inline-start:18px; font-size:14px; color:var(--ink-700); margin:0;">
+          <li>فيديو قصير (30–45 ثانية) يروي قصة المنتج.</li>
+          <li>صورة احترافية تُظهر شعار المبادرة.</li>
+          <li>قصة تفاعلية أسبوعية لتفاعل الزبائن.</li>
+          <li>ملصق QR موحَّد داخل المنشأة.</li>
+          <li>تسليم المحتوى عبر منصة رفع مركزية للمراجعة.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. CLOSING CEREMONY ============ -->
+<section class="chapter alt" id="closing">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="sparkle"></div>
+      <div>
+        <p class="chapter-eyebrow">10 — الحفل الختامي</p>
+        <h2 class="chapter-title">الرياض، الشهر السادس</h2>
+      </div>
+    </div>
+    <div class="grid grid-2 reveal">
+      <ul style="padding-inline-start:20px; color:var(--ink-700); margin:0;">
+        <li>معرض مصاحب لأبرز المنتجات مع محطات تذوق حية.</li>
+        <li>كلمتا افتتاح للمركز الوطني والجمعية.</li>
+        <li>إعلان الفائزين في المسارات الخمسة وتكريمهم.</li>
+        <li>تكريم الرعاة وفقرة توقيع شراكات النسخة القادمة.</li>
+        <li>بث حي وتغطية مؤثرين لأقصى انتشار رقمي.</li>
+      </ul>
+      <div class="card">
+        <h4 style="margin-bottom:12px;">قاعات مقترحة في الرياض</h4>
+        <ul style="padding-inline-start:18px; font-size:14px; color:var(--ink-700); margin:0;">
+          <li><b>مركز الرياض الدولي للمؤتمرات والمعارض (RICEC)</b> — لحفل متوسط إلى كبير مع معرض مصاحب.</li>
+          <li><b>واجهة الرياض للمعارض والمؤتمرات</b> — أكبر مركز معارض في المملكة، لتوسعة الحفل والمعرض.</li>
+          <li><b>قاعات فندقية فاخرة</b> (فور سيزونز / ريتز كارلتون / بوليفارد الرياض سيتي) — لحفل أكثر خصوصية بأعداد VIP محدودة.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. SPONSORSHIP ============ -->
+<section class="chapter" id="sponsorship">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="handshake"></div>
+      <div>
+        <p class="chapter-eyebrow">11 — الرعايات</p>
+        <h2 class="chapter-title">من 30 ألف إلى 500 ألف ريال</h2>
+      </div>
+    </div>
+
+    <div class="grid grid-4 reveal">
+      <div class="tier-card">
+        <div class="tier-name">البرونزية</div>
+        <div class="tier-price">30,000 <span>ريال</span></div>
+        <ul class="tier-list">
+          <li>شعار في صفحة الرعاة الرقمية</li>
+          <li>دعوتان للحفل الختامي</li>
+          <li>شهادة شكر رسمية</li>
+        </ul>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name">الفضية</div>
+        <div class="tier-price">100,000 <span>ريال</span></div>
+        <ul class="tier-list">
+          <li>شعار في المواد الرقمية والمطبوعة</li>
+          <li>دعوات للحفل الختامي</li>
+          <li>ظهور على الموقع الرقمي</li>
+        </ul>
+      </div>
+      <div class="tier-card">
+        <div class="tier-name">الذهبية</div>
+        <div class="tier-price">250,000 <span>ريال</span></div>
+        <ul class="tier-list">
+          <li>شعار بارز في المواد الإعلامية</li>
+          <li>منصة عرض في الحفل الختامي</li>
+          <li>دعوات VIP وإشارة في البيانات الصحفية</li>
+        </ul>
+      </div>
+      <div class="tier-card featured">
+        <div class="tier-badge">الأعلى قيمة</div>
+        <div class="tier-name">البلاتينية</div>
+        <div class="tier-price">500,000 <span>ريال</span></div>
+        <ul class="tier-list">
+          <li>شعار رئيسي بحجم الراعي الاستراتيجي</li>
+          <li>جناح خاص وكلمة في الحفل الختامي</li>
+          <li>حق تسمية أحد المسارات الأربعة</li>
+        </ul>
+      </div>
+    </div>
+    <p class="reveal" style="text-align:center; color:var(--ink-700); font-size:14px; margin-top:22px;">إضافة إلى الراعي الاستراتيجي — المركز الوطني للنخيل والتمور — بشراكة كاملة وتسمية مشتركة للجائزة.</p>
+  </div>
+</section>
+
+<!-- ============ 12. BUDGET & ROI ============ -->
+<section class="chapter alt" id="budget">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="wallet"></div>
+      <div>
+        <p class="chapter-eyebrow">12 — الميزانية والعوائد</p>
+        <h2 class="chapter-title">3 ملايين ريال، وعائد يفوق 3 أضعاف</h2>
+      </div>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>البند</th><th>القيمة</th><th>النسبة</th></tr></thead>
+        <tbody>
+          <tr><td>الجوائز (المسارات الخمسة)</td><td>1,000,000</td><td>33%</td></tr>
+          <tr><td>التسويق والإعلام والمؤثرون</td><td>700,000</td><td>23%</td></tr>
+          <tr><td>التشغيل والتنظيم والتحكيم</td><td>500,000</td><td>17%</td></tr>
+          <tr><td>الحفل الختامي</td><td>400,000</td><td>13%</td></tr>
+          <tr><td>إدارة الرعايات والشراكات</td><td>150,000</td><td>5%</td></tr>
+          <tr><td>احتياطي ومخاطر تشغيلية</td><td>250,000</td><td>8%</td></tr>
+          <tr><td>الإجمالي</td><td>3,000,000 ريال</td><td>100%</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid grid-2 reveal" style="margin-top:28px;">
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>المؤشر المالي</th><th>التقدير</th></tr></thead>
+          <tbody>
+            <tr><td>إيرادات مبيعات المنتجات (200,000 وحدة)</td><td>3–5 ملايين ريال</td></tr>
+            <tr><td>القيمة الإعلامية المكافئة</td><td>8–12 مليون ريال</td></tr>
+            <tr><td>إيرادات الرعايات المتوقعة</td><td>1.5–2 مليون ريال</td></tr>
+            <tr><td>العائد على الميزانية التشغيلية</td><td>يفوق 3 أضعاف</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="quote-box" style="font-size:16px;">تُغطَّى الميزانية جزئيًا عبر إيرادات الرعايات (1.5–2 مليون ريال تقديريًا)، فيما تُغطي الجمعية والمركز الوطني الفارق التمويلي المتبقي.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13. RISKS & ROADMAP ============ -->
+<section class="chapter" id="risks">
+  <div class="wrap">
+    <div class="chapter-head reveal">
+      <div class="chapter-icon" data-icon="shield"></div>
+      <div>
+        <p class="chapter-eyebrow">13 — المخاطر وخارطة الطريق</p>
+        <h2 class="chapter-title">من نسخة أولى إلى منظومة وطنية</h2>
+      </div>
+    </div>
+
+    <div class="table-wrap reveal">
+      <table>
+        <thead><tr><th>المخاطرة</th><th>إجراء المعالجة</th></tr></thead>
+        <tbody>
+          <tr><td>ضعف إقبال المنشآت</td><td>حوافز تسجيل مبكر وتسهيل إجراءات الانضمام</td></tr>
+          <tr><td>عدم الالتزام بالاستمرارية</td><td>بند تعاقدي ومتابعة دورية بعد الحفل</td></tr>
+          <tr><td>تعارض مصالح الرعاة</td><td>مبدأ حصرية الفئة ضمن اتفاقيات الرعاية</td></tr>
+          <tr><td>تجاوز الميزانية</td><td>احتياطي 8% ومراجعة ربع سنوية</td></tr>
+          <tr><td>تأخر تجهيزات القاعة</td><td>حجز مبكر قبل 3 أشهر وخطة بديلة</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="grid grid-3 reveal" style="margin-top:32px;">
+      <div class="card"><b>السنة 1–2</b><p style="margin-top:8px">إطلاق النسخة التأسيسية، ثم توسيع النطاق للمصانع والطهاة.</p></div>
+      <div class="card"><b>السنة 3–4</b><p style="margin-top:8px">مسار FoodTech والجامعات، وتحويل "نواة" إلى منتدى سنوي.</p></div>
+      <div class="card"><b>السنة 5</b><p style="margin-top:8px">مختبر "نواة" وبرنامج دعم رواد الأعمال — منظومة وطنية دائمة.</p></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot">
+  <div class="wrap">
+    <div class="wordmark-sm">نواة</div>
+    <div>من أصالة التمور... إلى ابتكار المستقبل</div>
+    <div class="badge-row">
+      <span class="badge">جمعية ملاك المطاعم والمقاهي</span>
+      <span class="badge">بالشراكة مع المركز الوطني للنخيل والتمور</span>
+    </div>
+    <small>الوثيقة التنفيذية الشاملة — يوليو 2026 · نسخة عرض رقمي</small>
+  </div>
+</footer>
+
+<script>
+  // ---------- Icon library ----------
+  const ICONS = {
+    seed: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c-5 0-8-3-8-8 5 0 8 3 8 8Z"/><path d="M12 22c5 0 8-3 8-8-5 0-8 3-8 8Z"/><path d="M12 14V2"/><path d="M8 6c0 2 1.5 3 4 3s4-1 4-3"/></svg>',
+    compass: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M15 9l-2 6-6 2 2-6 6-2Z"/></svg>',
+    chart: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10"/><path d="M12 20V4"/><path d="M20 20v-7"/><path d="M2 20h20"/></svg>',
+    org: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="5" rx="1"/><rect x="2" y="16" width="6" height="5" rx="1"/><rect x="16" y="16" width="6" height="5" rx="1"/><path d="M12 7v5m0 0H5v4m7-4h7v4"/></svg>',
+    calendar: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg>',
+    check: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M8 12l3 3 5-6"/></svg>',
+    trophy: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M8 4h8v5a4 4 0 0 1-8 0V4Z"/><path d="M8 5H4v2a4 4 0 0 0 4 4M16 5h4v2a4 4 0 0 1-4 4"/><path d="M12 13v4m-3 3h6M9 20h6"/></svg>',
+    users: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.6 2.9-6 6.5-6s6.5 2.4 6.5 6"/><circle cx="18" cy="9" r="2.4"/><path d="M15.5 14.2c2.7.3 4.5 2.3 4.5 5.3"/></svg>',
+    megaphone: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a2 2 0 0 0 2 2h1l3 5V6l-3 5H5a2 2 0 0 0-2 2Z"/><path d="M14 8a12 12 0 0 1 6-3v14a12 12 0 0 1-6-3"/></svg>',
+    sparkle: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v4M12 17v4M3 12h4M17 12h4"/><path d="M12 8a4 4 0 0 0 4 4 4 4 0 0 0-4 4 4 4 0 0 0-4-4 4 4 0 0 0 4-4Z"/></svg>',
+    handshake: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12l4-4 4 3-3 4Z"/><path d="M22 12l-4-4-6 5 2 2 2-1 2 2Z"/><path d="M8 15l2 2 2-1"/></svg>',
+    wallet: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="14" rx="2"/><path d="M2 10h20"/><circle cx="17" cy="15" r="1.3" fill="currentColor" stroke="none"/></svg>',
+    shield: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Z"/><path d="M12 8v5"/><circle cx="12" cy="16" r=".6" fill="currentColor" stroke="none"/></svg>',
+    bulb: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18h6M10 22h4"/><path d="M12 2a7 7 0 0 0-4 12.7c.6.5 1 1.3 1 2.3h6c0-1 .4-1.8 1-2.3A7 7 0 0 0 12 2Z"/></svg>',
+    growth: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>',
+    culture: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V10l7-6 7 6v11"/><path d="M9 21v-6h6v6"/></svg>',
+    media: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="6" width="20" height="13" rx="2"/><path d="M8 3l4 3 4-3"/><circle cx="12" cy="12.5" r="3"/></svg>',
+    scan: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 7V4h3M21 7V4h-3M3 17v3h3M21 17v3h-3"/><rect x="8" y="8" width="8" height="8" rx="1"/></svg>',
+    share: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="18" cy="5" r="2.4"/><circle cx="6" cy="12" r="2.4"/><circle cx="18" cy="19" r="2.4"/><path d="M8.2 10.7l7.6-4.4M8.2 13.3l7.6 4.4"/></svg>',
+    passport: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="10" r="2.5"/><path d="M8 17h8"/></svg>',
+  };
+  // Nav pills: keep the label, prefix with icon
+  document.querySelectorAll('.nav-pill[data-icon]').forEach(el=>{
+    const key = el.getAttribute('data-icon');
+    const label = el.textContent.trim();
+    el.innerHTML = (ICONS[key]||'') + '<span>'+label+'</span>';
+  });
+  // Plain icon holders (chapter icons, card icons): just inject the icon
+  document.querySelectorAll('[data-icon]:not(.nav-pill)').forEach(el=>{
+    const key = el.getAttribute('data-icon');
+    if(ICONS[key]) el.innerHTML = ICONS[key];
+  });
+
+  // ---------- Scrollspy ----------
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks = document.querySelectorAll('.nav-pill');
+  const spy = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        navLinks.forEach(l=>l.classList.toggle('active', l.getAttribute('href') === '#'+entry.target.id));
+      }
+    });
+  }, { rootMargin: '-40% 0px -50% 0px', threshold: 0 });
+  sections.forEach(s=>spy.observe(s));
+
+  // ---------- Reveal on scroll ----------
+  const revealEls = document.querySelectorAll('.reveal');
+  if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    revealEls.forEach(el=>el.classList.add('in'));
+  } else {
+    const ro = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); ro.unobserve(e.target);} });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el=>ro.observe(el));
+  }
+</script>
+</body>
+</html>
